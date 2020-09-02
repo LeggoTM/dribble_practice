@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 const PRIMARY = "primary";
+const WHITE = "white";
 
 const Map<String, Color> myColors = {
   PRIMARY: Color.fromRGBO(226, 115, 138, 1),
+  WHITE: Colors.white,
 };
 
 class HomeScreen extends StatelessWidget {
@@ -16,15 +18,43 @@ class HomeScreen extends StatelessWidget {
 }
 
 Widget myAppBar() {
-  return AppBar(
-    backgroundColor: Colors.white,
-    elevation: 0,
-    leading: IconButton(
-      icon: Icon(
-        Icons.menu,
-        color: myColors[PRIMARY],
+  return PreferredSize(
+    preferredSize: Size.fromHeight(70),
+    child: AppBar(
+      backgroundColor: myColors[WHITE],
+      elevation: 0,
+      leading: Padding(
+        padding: const EdgeInsets.only(
+          left: 15,
+          top: 15,
+        ),
+        child: IconButton(
+          icon: Icon(
+            Icons.menu,
+            color: myColors[PRIMARY],
+            size: 30,
+          ),
+          onPressed: () => print('Menu pressed'),
+        ),
       ),
-      onPressed: () => print('Menu pressed'),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(
+            right: 15,
+            top: 15,
+          ),
+          child: IconButton(
+            icon: Icon(
+              Icons.search,
+              color: myColors[PRIMARY],
+              size: 30,
+            ),
+            onPressed: () => print(
+              'Search pressed',
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }
