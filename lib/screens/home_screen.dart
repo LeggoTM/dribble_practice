@@ -12,12 +12,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(),
+      appBar: _myAppBar(),
+      backgroundColor: myColors[PRIMARY],
+      body: _Body(),
     );
   }
 }
 
-Widget myAppBar() {
+Widget _myAppBar() {
   return PreferredSize(
     preferredSize: Size.fromHeight(70),
     child: AppBar(
@@ -57,4 +59,30 @@ Widget myAppBar() {
       ],
     ),
   );
+}
+
+class _Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          flex: 7,
+          child: Container(
+            decoration: BoxDecoration(
+              color: myColors[WHITE],
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(45),
+                bottomRight: Radius.circular(45),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 3,
+          child: Container(),
+        ),
+      ],
+    );
+  }
 }
