@@ -1,6 +1,6 @@
 # dribble_practice
 
-A new Flutter project.
+A Flutter project to make UI from dribble using tutorials from [Ovidius Mazuru's](https://www.youtube.com/channel/UCJW25d8mW8ciz0DQC-5XNsQ/videos) youtube channel.
 
 ## Getting Started
 
