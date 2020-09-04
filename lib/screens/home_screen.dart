@@ -69,12 +69,42 @@ class _Body extends StatelessWidget {
         Expanded(
           flex: 7,
           child: Container(
+            width: double.infinity,
             decoration: BoxDecoration(
               color: myColors[WHITE],
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(45),
                 bottomRight: Radius.circular(45),
               ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 25,
+                    bottom: 20,
+                  ),
+                  child: Text(
+                    'Cosmetics that Everyone loves!',
+                    style: TextStyle(
+                      fontSize: 47,
+                      letterSpacing: 1.7,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Row(),
+                        Row(),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
