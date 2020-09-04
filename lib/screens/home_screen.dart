@@ -27,7 +27,7 @@ Widget _myAppBar() {
       elevation: 0,
       leading: Padding(
         padding: const EdgeInsets.only(
-          left: 15,
+          left: 12,
           top: 15,
         ),
         child: IconButton(
@@ -82,8 +82,9 @@ class _Body extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 25,
+                    left: 17,
                     bottom: 20,
+                    top: 15,
                   ),
                   child: Text(
                     'Cosmetics that Everyone loves!',
@@ -94,15 +95,43 @@ class _Body extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Row(),
-                        Row(),
-                      ],
-                    ),
-                  ],
+                Expanded(
+                  child: LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      return Row(
+                        children: [
+                          Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image(
+                                    height: constraints.maxHeight * 0.75,
+                                    image:
+                                        AssetImage('assets/images/makeup1.png'),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 30),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.favorite_border,
+                                        color: myColors[PRIMARY],
+                                      ),
+                                      onPressed: () => print(
+                                        ' Favourite Button pressed',
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
