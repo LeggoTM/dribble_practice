@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 const PRIMARY = "primary";
 const WHITE = "white";
+const SECONDARY = "lightpink";
 
 const Map<String, Color> myColors = {
   PRIMARY: Color.fromRGBO(226, 115, 138, 1),
   WHITE: Colors.white,
+  SECONDARY: Color.fromRGBO(247, 225, 227, 1),
 };
 
 class HomeScreen extends StatelessWidget {
@@ -125,7 +127,42 @@ class _Body extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Row(),
+                              Row(
+                                children: [
+                                  Text(
+                                    '\$15.00',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  InkWell(
+                                    onTap: () => print('Add Button Pressed'),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: myColors[SECONDARY],
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10),
+                                          bottomLeft: Radius.circular(10),
+                                          bottomRight: Radius.circular(20),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(6.0),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: myColors[PRIMARY],
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ],
