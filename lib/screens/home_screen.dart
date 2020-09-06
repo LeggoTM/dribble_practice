@@ -139,28 +139,91 @@ class _Body extends StatelessWidget {
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  InkWell(
-                                    onTap: () => print('Add Button Pressed'),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: myColors[SECONDARY],
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10),
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(20),
-                                        ),
+                                  _AddButton(),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 40,
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image(
+                                    height: constraints.maxHeight * 0.40,
+                                    image:
+                                        AssetImage('assets/images/makeup2.png'),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 30),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.favorite_border,
+                                        color: myColors[PRIMARY],
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(6.0),
-                                        child: Icon(
-                                          Icons.add,
-                                          color: myColors[PRIMARY],
-                                          size: 20,
-                                        ),
+                                      onPressed: () => print(
+                                        ' Favourite Button pressed',
                                       ),
                                     ),
                                   ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '\$15.00',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  _AddButton(),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image(
+                                    height: constraints.maxHeight * 0.40,
+                                    image:
+                                        AssetImage('assets/images/makeup3.png'),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 30),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.favorite_border,
+                                        color: myColors[PRIMARY],
+                                      ),
+                                      onPressed: () => print(
+                                        ' Favourite Button pressed',
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '\$15.00',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  _AddButton(),
                                 ],
                               ),
                             ],
@@ -179,6 +242,34 @@ class _Body extends StatelessWidget {
           child: Container(),
         ),
       ],
+    );
+  }
+}
+
+class _AddButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => print('Add Button Pressed'),
+      child: Container(
+        decoration: BoxDecoration(
+          color: myColors[SECONDARY],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Icon(
+            Icons.add,
+            color: myColors[PRIMARY],
+            size: 20,
+          ),
+        ),
+      ),
     );
   }
 }
