@@ -103,128 +103,31 @@ class _Body extends StatelessWidget {
                         (BuildContext context, BoxConstraints constraints) {
                       return Row(
                         children: [
-                          Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image(
-                                    height: constraints.maxHeight * 0.75,
-                                    image:
-                                        AssetImage('assets/images/makeup1.png'),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 30),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.favorite_border,
-                                        color: myColors[PRIMARY],
-                                      ),
-                                      onPressed: () => print(
-                                        ' Favourite Button pressed',
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '\$15.00',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  _AddButton(),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 40,
+                          _ItemTile(
+                            height: constraints.maxHeight * 0.85,
+                            imagePath: 'assets/images/makeup1.png',
+                            price: 15.00,
+                            addCallback: () => print('Add button pressed'),
+                            favouriteCallback: () =>
+                                print('Favourite button pressed'),
                           ),
                           Column(
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image(
-                                    height: constraints.maxHeight * 0.40,
-                                    image:
-                                        AssetImage('assets/images/makeup2.png'),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 30),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.favorite_border,
-                                        color: myColors[PRIMARY],
-                                      ),
-                                      onPressed: () => print(
-                                        ' Favourite Button pressed',
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              _ItemTile(
+                                height: constraints.maxHeight * 0.4,
+                                imagePath: 'assets/images/makeup2.png',
+                                price: 55.00,
+                                addCallback: () => print('Add button pressed'),
+                                favouriteCallback: () =>
+                                    print('Favourite button pressed'),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '\$15.00',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  _AddButton(),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image(
-                                    height: constraints.maxHeight * 0.40,
-                                    image:
-                                        AssetImage('assets/images/makeup3.png'),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 30),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.favorite_border,
-                                        color: myColors[PRIMARY],
-                                      ),
-                                      onPressed: () => print(
-                                        ' Favourite Button pressed',
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '\$15.00',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  _AddButton(),
-                                ],
+                              _ItemTile(
+                                height: constraints.maxHeight * 0.4,
+                                imagePath: 'assets/images/makeup3.png',
+                                price: 75.00,
+                                addCallback: () => print('Add button pressed'),
+                                favouriteCallback: () =>
+                                    print('Favourite button pressed'),
                               ),
                             ],
                           ),
@@ -246,30 +149,81 @@ class _Body extends StatelessWidget {
   }
 }
 
-class _AddButton extends StatelessWidget {
+class _ItemTile extends StatelessWidget {
+  final double height;
+  final String imagePath;
+  final Function favouriteCallback;
+  final Function addCallback;
+  final double price;
+
+  const _ItemTile({
+    Key key,
+    @required this.height,
+    @required this.imagePath,
+    @required this.favouriteCallback,
+    @required this.addCallback,
+    @required this.price,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => print('Add Button Pressed'),
-      child: Container(
-        decoration: BoxDecoration(
-          color: myColors[SECONDARY],
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-            bottomRight: Radius.circular(20),
-          ),
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image(
+              height: height,
+              image: AssetImage(imagePath),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: IconButton(
+                icon: Icon(
+                  Icons.favorite_border,
+                  color: myColors[PRIMARY],
+                ),
+                onPressed: () => favouriteCallback,
+              ),
+            ),
+          ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(6.0),
-          child: Icon(
-            Icons.add,
-            color: myColors[PRIMARY],
-            size: 20,
-          ),
+        Row(
+          children: [
+            Text(
+              '\$$price',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            InkWell(
+              onTap: () => addCallback,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: myColors[SECONDARY],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Icon(
+                    Icons.add,
+                    color: myColors[PRIMARY],
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-      ),
+      ],
     );
   }
 }
