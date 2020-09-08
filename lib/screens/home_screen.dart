@@ -75,8 +75,8 @@ class _Body extends StatelessWidget {
             decoration: BoxDecoration(
               color: myColors[WHITE],
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(45),
-                bottomRight: Radius.circular(45),
+                bottomLeft: Radius.circular(50),
+                bottomRight: Radius.circular(50),
               ),
             ),
             child: Column(
@@ -115,7 +115,7 @@ class _Body extends StatelessWidget {
                           Column(
                             children: [
                               _ItemTile(
-                                height: constraints.maxHeight * 0.4,
+                                height: constraints.maxHeight * 0.39,
                                 imagePath: 'assets/images/makeup2.png',
                                 price: 55.00,
                                 addCallback: () => print('Add button pressed'),
@@ -123,7 +123,7 @@ class _Body extends StatelessWidget {
                                     print('Favourite button pressed'),
                               ),
                               _ItemTile(
-                                height: constraints.maxHeight * 0.4,
+                                height: constraints.maxHeight * 0.39,
                                 imagePath: 'assets/images/makeup3.png',
                                 price: 75.00,
                                 addCallback: () => print('Add button pressed'),
@@ -143,7 +143,53 @@ class _Body extends StatelessWidget {
         ),
         Expanded(
           flex: 3,
-          child: Container(),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 15,
+                  left: 5,
+                ),
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Spacer(),
+                    Text(
+                      'Recommended',
+                      style: TextStyle(
+                          color: myColors[WHITE],
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Spacer(
+                      flex: 9,
+                    ),
+                    InkWell(
+                      onTap: () => print('arrow button'),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: myColors[WHITE],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: myColors[PRIMARY],
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Spacer(
+                      flex: 1,
+                    ),
+                  ],
+                ),
+              ),
+              Container(),
+            ],
+          ),
         ),
       ],
     );
