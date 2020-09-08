@@ -102,6 +102,7 @@ class _Body extends StatelessWidget {
                     builder:
                         (BuildContext context, BoxConstraints constraints) {
                       return Row(
+                        //mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _ItemTile(
                             height: constraints.maxHeight * 0.85,
@@ -180,9 +181,10 @@ class _ItemTile extends StatelessWidget {
               child: IconButton(
                 icon: Icon(
                   Icons.favorite_border,
+                  size: 25,
                   color: myColors[PRIMARY],
                 ),
-                onPressed: () => favouriteCallback,
+                onPressed: () => favouriteCallback(),
               ),
             ),
           ],
@@ -200,7 +202,7 @@ class _ItemTile extends StatelessWidget {
               width: 20,
             ),
             InkWell(
-              onTap: () => addCallback,
+              onTap: () => addCallback(),
               child: Container(
                 decoration: BoxDecoration(
                   color: myColors[SECONDARY],
