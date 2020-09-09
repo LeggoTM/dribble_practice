@@ -214,7 +214,17 @@ class _Body extends StatelessWidget {
                         right: 20,
                         child: Container(
                           height: constraints.maxHeight * 0.8,
-                          width: constraints.maxWidth * 0.8,
+                          width: constraints.maxWidth * 0.85,
+                          child: Row(
+                            children: [
+                              Image(
+                                height: constraints.maxHeight * 0.8,
+                                image: AssetImage('assets/images/makeup4.png'),
+                              ),
+                              Column(),
+                              Column(),
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -257,14 +267,7 @@ class _ItemTile extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30),
-              child: IconButton(
-                icon: Icon(
-                  Icons.favorite_border,
-                  size: 25,
-                  color: myColors[PRIMARY],
-                ),
-                onPressed: () => favouriteCallback(),
-              ),
+              child: FavouriteButton(favouriteCallback: favouriteCallback),
             ),
           ],
         ),
@@ -280,31 +283,66 @@ class _ItemTile extends StatelessWidget {
             SizedBox(
               width: 20,
             ),
-            InkWell(
-              onTap: () => addCallback(),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: myColors[SECONDARY],
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(20),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: Icon(
-                    Icons.add,
-                    color: myColors[PRIMARY],
-                    size: 20,
-                  ),
-                ),
-              ),
-            ),
+            AddButton(addCallback: addCallback),
           ],
         ),
       ],
+    );
+  }
+}
+
+class AddButton extends StatelessWidget {
+  const AddButton({
+    Key key,
+    @required this.addCallback,
+  }) : super(key: key);
+
+  final Function addCallback;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => addCallback(),
+      child: Container(
+        decoration: BoxDecoration(
+          color: myColors[SECONDARY],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Icon(
+            Icons.add,
+            color: myColors[PRIMARY],
+            size: 20,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FavouriteButton extends StatelessWidget {
+  const FavouriteButton({
+    Key key,
+    @required this.favouriteCallback,
+  }) : super(key: key);
+
+  final Function favouriteCallback;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        Icons.favorite_border,
+        size: 25,
+        color: myColors[PRIMARY],
+      ),
+      onPressed: () => favouriteCallback(),
     );
   }
 }
