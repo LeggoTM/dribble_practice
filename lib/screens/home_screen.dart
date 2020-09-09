@@ -149,11 +149,14 @@ class _Body extends StatelessWidget {
                 padding: const EdgeInsets.only(
                   top: 15,
                   left: 5,
+                  bottom: 20,
                 ),
                 child: Row(
                   //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Spacer(),
+                    Spacer(
+                      flex: 2,
+                    ),
                     Text(
                       'Recommended',
                       style: TextStyle(
@@ -162,7 +165,7 @@ class _Body extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     Spacer(
-                      flex: 9,
+                      flex: 10,
                     ),
                     InkWell(
                       onTap: () => print('arrow button'),
@@ -182,12 +185,42 @@ class _Body extends StatelessWidget {
                       ),
                     ),
                     Spacer(
-                      flex: 1,
+                      flex: 2,
                     ),
                   ],
                 ),
               ),
-              Container(),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) => Stack(
+                    children: [
+                      Positioned(
+                        right: 20,
+                        child: Container(
+                          height: constraints.maxHeight * 0.8,
+                          width: constraints.maxWidth * 0.8,
+                          decoration: BoxDecoration(
+                            color: myColors[WHITE],
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(40),
+                              bottomRight: Radius.circular(40),
+                              bottomLeft: Radius.circular(40),
+                              topLeft: Radius.circular(95),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 20,
+                        child: Container(
+                          height: constraints.maxHeight * 0.8,
+                          width: constraints.maxWidth * 0.8,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
