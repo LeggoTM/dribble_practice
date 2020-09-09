@@ -2,7 +2,7 @@
 
 A Flutter project to make UI from dribble using tutorials from [Ovidius Mazuru's](https://www.youtube.com/channel/UCJW25d8mW8ciz0DQC-5XNsQ/videos) youtube channel.
 
-![Screenshot](/assets/ss.png | width = 100)
+![Screenshot](/assets/ss.png){:height="50%" width="50%"}
 
 ## Getting Started
 
