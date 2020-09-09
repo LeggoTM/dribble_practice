@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 const PRIMARY = "primary";
 const WHITE = "white";
 const SECONDARY = "lightpink";
+const GREY = "grey";
 
 const Map<String, Color> myColors = {
   PRIMARY: Color.fromRGBO(226, 115, 138, 1),
   WHITE: Colors.white,
   SECONDARY: Color.fromRGBO(247, 225, 227, 1),
+  GREY: Colors.grey,
 };
+
+var priceTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+);
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -211,17 +218,46 @@ class _Body extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        right: 20,
+                        right: 30,
                         child: Container(
                           height: constraints.maxHeight * 0.8,
                           width: constraints.maxWidth * 0.85,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image(
                                 height: constraints.maxHeight * 0.8,
                                 image: AssetImage('assets/images/makeup4.png'),
                               ),
-                              Column(),
+                              Spacer(),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Spacer(
+                                    flex: 3,
+                                  ),
+                                  Container(
+                                    width: constraints.maxWidth * 0.45,
+                                    child: Text(
+                                      'Multi shades multiple options available',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: myColors[GREY],
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(
+                                    flex: 2,
+                                  ),
+                                  Text(
+                                    '\$55.00',
+                                    style: priceTextStyle,
+                                  ),
+                                  Spacer(
+                                    flex: 3,
+                                  ),
+                                ],
+                              ),
                               Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
@@ -294,10 +330,7 @@ class _ItemTile extends StatelessWidget {
           children: [
             Text(
               '\$${price.toStringAsFixed(2)}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+              style: priceTextStyle,
             ),
             SizedBox(
               width: 20,
