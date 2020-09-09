@@ -222,7 +222,26 @@ class _Body extends StatelessWidget {
                                 image: AssetImage('assets/images/makeup4.png'),
                               ),
                               Column(),
-                              Column(),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  FavouriteButton(
+                                    favouriteCallback: () => print(
+                                      'favorite button pressed',
+                                    ),
+                                  ),
+                                  Spacer(
+                                    flex: 3,
+                                  ),
+                                  AddButton(
+                                    addCallback: () => print(
+                                      'Add button pressed',
+                                    ),
+                                  ),
+                                  Spacer(),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -274,7 +293,7 @@ class _ItemTile extends StatelessWidget {
         Row(
           children: [
             Text(
-              '\$$price',
+              '\$${price.toStringAsFixed(2)}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
